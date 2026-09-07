@@ -7,6 +7,7 @@ import { silentRefreshHFToken } from './utils/higgsfieldAuth'
 import Nav from './components/Nav'
 import Landing from './pages/Landing'
 import Demo from './pages/Demo'
+import ResponsibleAI from './pages/ResponsibleAI'
 import Influencers from './pages/Influencers'
 import Inspiration from './pages/Inspiration'
 import BrandDeals from './pages/BrandDeals'
@@ -32,6 +33,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/demo" element={<Demo />} />
+        <Route path="/responsible-ai" element={<ResponsibleAI />} />
         <Route path="/influencers" element={<Influencers />} />
         <Route path="/inspiration" element={<Inspiration />} />
         <Route path="/brand-deals" element={<BrandDeals />} />
