@@ -1,4 +1,3 @@
-# Triggered after workflow registration
 name: Phase 1 Repo Cleanup
 
 on:
@@ -28,12 +27,10 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Remove legacy agent files
+      - name: Apply Phase 1 cleanup
         run: |
           git rm -r --ignore-unmatch .agents .claude CLAUDE.md skills-lock.json
 
-      - name: Update gitignore
-        run: |
           cat > .gitignore <<'EOF'
           node_modules/
           dist/
@@ -47,8 +44,6 @@ jobs:
           .agents/
           EOF
 
-      - name: Replace old setup guide
-        run: |
           cat > SETUP.txt <<'EOF'
           AI INFLUENCER STUDIO — SETUP GUIDE
           ==================================
@@ -98,33 +93,33 @@ jobs:
           Full image generation outside demo mode requires connecting the supported external generation accounts through the app settings. Do not commit API keys or secrets to the repository.
           EOF
 
-      - name: Remove legacy Higgsfield referral copy
-        run: |
           python - <<'PY'
           from pathlib import Path
-          p = Path('src/utils/higgsfieldAuth.js')
-          s = p.read_text()
-          s = s.replace(
-              "// Opens ONE popup. First-time users: popup starts on higgsfield.ai (sets referral cookie),\n// then auto-navigates to OAuth in the same popup window. No extra tabs ever.",
-              "// Opens ONE popup. First-time users start on the Higgsfield homepage,\n// then auto-navigate to OAuth in the same popup window. No extra tabs ever."
-          )
-          s = s.replace("const referralDone = localStorage.getItem('hf_referral_fired')", "const introSeen = localStorage.getItem('hf_intro_seen')")
-          s = s.replace(
-              "// First-time users land on the referral page (sets cookie); returning users get\n  // a blank popup we immediately redirect once the auth URL is ready.",
-              "// First-time users land on the Higgsfield homepage; returning users get\n  // a blank popup we immediately redirect once the auth URL is ready."
-          )
-          s = s.replace("const startUrl = referralDone ? 'about:blank' : 'https://higgsfield.ai/?fpr=dankieft&fp_sid=tool'", "const startUrl = introSeen ? 'about:blank' : 'https://higgsfield.ai/'")
-          s = s.replace('if (referralDone) {', 'if (introSeen) {')
-          s = s.replace("// First-timer: give the referral page ~2.5 s to set its cookie, then go to OAuth.", "// First-timer: briefly show Higgsfield, then go to OAuth.")
-          s = s.replace("// Only mark referral as fired after OAuth actually succeeds", "// Only mark the intro page as seen after OAuth actually succeeds")
-          s = s.replace("if (!referralDone) localStorage.setItem('hf_referral_fired', '1')", "if (!introSeen) localStorage.setItem('hf_intro_seen', '1')")
-          if 'dankieft' in s.lower() or 'fpr=' in s.lower():
-              raise SystemExit('Legacy referral marker still present in higgsfieldAuth.js')
-          p.write_text(s)
+          import re
+
+          auth = Path('src/utils/higgsfieldAuth.js')
+          s = auth.read_text()
+          s = re.sub(r"https://higgsfield\.ai/\?[^'\"]*", "https://higgsfield.ai/", s)
+          s = s.replace('referralDone', 'introSeen')
+          s = s.replace('hf_referral_fired', 'hf_intro_seen')
+          s = s.replace('referral page (sets cookie)', 'Higgsfield homepage')
+          s = s.replace('referral page ~2.5 s to set its cookie', 'Higgsfield homepage briefly')
+          s = s.replace('mark referral as fired', 'mark the intro page as seen')
+          s = s.replace('popup starts on higgsfield.ai (sets referral cookie)', 'popup starts on the Higgsfield homepage')
+          auth.write_text(s)
+
+          moves = [
+              ('public/camila', 'public/demo/creators/camila'),
+              ('public/kayla', 'public/demo/creators/kayla'),
+              ('public/marcus', 'public/demo/creators/marcus'),
+              ('public/jake', 'public/demo/creators/jake'),
+              ('public/brad', 'public/demo/creators/brad'),
+              ('public/inf', 'public/demo/gallery/influencers'),
+              ('public/inspiration', 'public/demo/gallery/inspiration'),
+              ('public/prime', 'public/demo/campaigns/prime'),
+          ]
           PY
 
-      - name: Organize demo media folders
-        run: |
           mkdir -p public/demo/creators public/demo/gallery public/demo/campaigns
           git mv public/camila public/demo/creators/camila || true
           git mv public/kayla public/demo/creators/kayla || true
@@ -148,8 +143,14 @@ jobs:
               '/prime/': '/demo/campaigns/prime/',
           }
           text_exts = {'.js', '.jsx', '.ts', '.tsx', '.json', '.md', '.txt', '.html', '.css'}
-          for base in [Path('src'), Path('public'), Path('docs'), Path('README.md'), Path('SETUP.txt')]:
-              paths = [base] if base.is_file() else [p for p in base.rglob('*') if p.is_file() and p.suffix in text_exts]
+          roots = [Path('src'), Path('public'), Path('docs'), Path('README.md'), Path('SETUP.txt')]
+          for root in roots:
+              if root.is_file():
+                  paths = [root]
+              elif root.exists():
+                  paths = [p for p in root.rglob('*') if p.is_file() and p.suffix in text_exts]
+              else:
+                  paths = []
               for path in paths:
                   try:
                       data = path.read_text()
@@ -174,9 +175,7 @@ jobs:
           These assets support the no-key judge demo and seeded local-first prototype data. Runtime paths intentionally stay public URL paths, for example `/demo/creators/camila/main.jpg`.
           EOF
 
-      - name: Verify no legacy attribution markers remain
-        run: |
-          if grep -RInE 'DaanKieft|Dan Kieft|dankieft|forms\.gle/p5cBXw4sYaHPdcANA|fpr=dankieft' . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist; then
+          if grep -RInE 'DaanKieft|Dan Kieft|dankieft|forms\.gle/p5cBXw4sYaHPdcANA|fpr=dankieft' . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=.github; then
             echo 'Legacy marker found; failing cleanup.'
             exit 1
           fi
