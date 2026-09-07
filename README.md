@@ -18,6 +18,7 @@ AI Influencer Studio solves this by helping users create a fictional brand-safe 
 - **Influencer management dashboard** — save, view, edit, regenerate, replace, and download creator assets.
 - **Photo Studio** — generate lifestyle photos by selecting location, pose, time of day, outfit, props, and aspect ratio.
 - **Brand Deals workspace** — organize campaign products and generate product-focused character sheets.
+- **Judge Demo Mode** — `/demo` gives reviewers a no-login, no-API-key walkthrough of the product story, sample persona, campaign output, and safety guardrails.
 - **Local-first data storage** — project data is stored in the user's browser through localStorage, so the prototype is lightweight and quick to demo.
 - **Vercel-ready deployment** — React + Vite frontend with serverless API routes for generation proxies and supporting services.
 
@@ -33,11 +34,26 @@ Recommended safety rules for usage and judging demos:
 - Avoid misleading political, medical, financial, or identity-based claims.
 - Use brand-safe fictional personas for marketing, storytelling, and prototyping.
 
+## Judge Demo Mode
+
+A dedicated judge-friendly demo is available at:
+
+```txt
+/demo
+```
+
+This route is designed for hackathon review. It does not require Higgsfield, Claude, or private API keys. It uses existing demo assets to explain:
+
+- the fictional creator workflow,
+- the brand campaign use case,
+- the safety and disclosure rules,
+- and the expected campaign output package.
+
 ## Hackathon Alignment
 
 For the hackathon submission, the product is positioned as a responsible AI marketing tool for Pakistan's youth, creators, and small businesses.
 
-Current prototype implementation includes the virtual creator workflow, image generation flow, local data layer, and deployment-ready structure. The Alibaba Cloud / Qwen-aligned roadmap is to use Alibaba Cloud services for:
+Current prototype implementation includes the virtual creator workflow, image generation flow, local data layer, deployment-ready structure, and judge demo route. The Alibaba Cloud / Qwen-aligned roadmap is to use Alibaba Cloud services for:
 
 - persona strategy generation,
 - campaign copywriting,
@@ -63,6 +79,7 @@ src/
   store.jsx               localStorage-backed shared state
   pages/
     Landing.jsx           Homepage
+    Demo.jsx              Judge-friendly no-key demo route
     Create.jsx            Guided influencer creation flow
     Influencers.jsx       Influencer dashboard and asset management
     PhotoStudio.jsx       Lifestyle image generation workflow
@@ -114,13 +131,13 @@ npm run preview
 
 The project is Vercel-ready. Connect this repository to Vercel and deploy. Vercel will detect the Vite frontend and the `api/` serverless functions automatically.
 
-For full generation functionality, connect the required external generation accounts in the app settings. For hackathon demos, a demo-safe mode should be added so judges can explore the workflow without entering personal API keys.
+For full generation functionality, connect the required external generation accounts in the app settings. For hackathon demos, use `/demo` so judges can review the product story without entering personal API keys.
 
 ## Submission Roadmap
 
 Before final submission:
 
-- [ ] Add judge-friendly demo mode.
+- [x] Add judge-friendly demo mode.
 - [ ] Replace or remove unused starter/demo assets.
 - [ ] Add Alibaba Cloud/Qwen integration or a clearly documented architecture plan.
 - [ ] Add a responsible AI disclosure section inside the app UI.
