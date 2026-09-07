@@ -61,18 +61,11 @@ A dedicated safety page is available at:
 
 This route explains the project's safe-use position: fictional-first creator design, consent-based references, clear AI disclosure, prohibited use cases, and human review before publishing.
 
-## Hackathon Alignment
+## Hackathon Fit
 
-For the hackathon submission, the product is positioned as a responsible AI marketing tool for Pakistan's youth, creators, and small businesses.
+This repository is being prepared as a hackathon submission candidate. The current implemented prototype includes the virtual creator workflow, image generation flow, local data layer, deployment-ready structure, judge demo route, responsible AI disclosure route, and automated build check.
 
-Current prototype implementation includes the virtual creator workflow, image generation flow, local data layer, deployment-ready structure, judge demo route, responsible AI disclosure route, and automated build check. The Alibaba Cloud / Qwen-aligned roadmap is to use Alibaba Cloud services for:
-
-- persona strategy generation,
-- campaign copywriting,
-- brand safety checks,
-- multilingual Urdu/English creator briefs,
-- scalable media storage,
-- and deployment infrastructure.
+This README only claims technologies and features that are already present in the repository. Alibaba Cloud, Qoder, and Qwen are not listed as implemented product dependencies unless they are actually integrated in a later commit.
 
 ## Tech Stack
 
@@ -168,8 +161,9 @@ Before final submission:
 - [x] Add judge-friendly demo mode.
 - [x] Add a responsible AI disclosure section inside the app UI.
 - [x] Add automated production build check.
+- [x] Remove unimplemented Alibaba Cloud/Qwen claims from current-feature documentation.
 - [ ] Replace or remove unused starter/demo assets.
-- [ ] Add Alibaba Cloud/Qwen integration or a clearly documented architecture plan.
+- [ ] Add Qoder, Alibaba Cloud, or Qwen only after actually using or integrating them.
 - [ ] Prepare live deployment link, demo video, screenshots, and pitch script.
 
 ## Team
