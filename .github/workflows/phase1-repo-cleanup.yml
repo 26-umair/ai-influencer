@@ -1,0 +1,200 @@
+name: Phase 1 Repo Cleanup
+
+on:
+  push:
+    branches:
+      - submission-ready-polish
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    name: Remove legacy files, clean setup, verify build
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: submission-ready-polish
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Remove legacy agent files
+        run: |
+          git rm -r --ignore-unmatch .agents .claude CLAUDE.md skills-lock.json
+
+      - name: Update gitignore
+        run: |
+          cat > .gitignore <<'EOF'
+          node_modules/
+          dist/
+          .DS_Store
+          *.local
+          .env
+          .env.*
+          !.env.example
+          *.log
+          .claude/
+          .agents/
+          EOF
+
+      - name: Replace old setup guide
+        run: |
+          cat > SETUP.txt <<'EOF'
+          AI INFLUENCER STUDIO — SETUP GUIDE
+          ==================================
+
+          This project is a React + Vite prototype for creating and managing fictional virtual influencers for brand campaigns, social content, and visual storytelling.
+
+          REQUIREMENTS
+          ------------
+          - Node.js 18 or newer
+          - npm
+          - A GitHub checkout of this repository
+
+          INSTALL
+          -------
+          npm install
+
+          START DEVELOPMENT SERVER
+          ------------------------
+          npm run dev
+
+          Then open the local URL printed by Vite, usually:
+
+          http://localhost:5173
+
+          PRODUCTION BUILD
+          ----------------
+          npm run build
+
+          PREVIEW PRODUCTION BUILD
+          ------------------------
+          npm run preview
+
+          DEMO MODE
+          ---------
+          Judges can review the product story without private API keys at:
+
+          /demo
+
+          RESPONSIBLE AI PAGE
+          -------------------
+          The responsible-use rules are available at:
+
+          /responsible-ai
+
+          GENERATION ACCOUNTS
+          -------------------
+          Full image generation outside demo mode requires connecting the supported external generation accounts through the app settings. Do not commit API keys or secrets to the repository.
+          EOF
+
+      - name: Remove legacy Higgsfield referral copy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/utils/higgsfieldAuth.js')
+          s = p.read_text()
+          s = s.replace(
+              "// Opens ONE popup. First-time users: popup starts on higgsfield.ai (sets referral cookie),\n// then auto-navigates to OAuth in the same popup window. No extra tabs ever.",
+              "// Opens ONE popup. First-time users start on the Higgsfield homepage,\n// then auto-navigate to OAuth in the same popup window. No extra tabs ever."
+          )
+          s = s.replace("const referralDone = localStorage.getItem('hf_referral_fired')", "const introSeen = localStorage.getItem('hf_intro_seen')")
+          s = s.replace(
+              "// First-time users land on the referral page (sets cookie); returning users get\n  // a blank popup we immediately redirect once the auth URL is ready.",
+              "// First-time users land on the Higgsfield homepage; returning users get\n  // a blank popup we immediately redirect once the auth URL is ready."
+          )
+          s = s.replace("const startUrl = referralDone ? 'about:blank' : 'https://higgsfield.ai/?fpr=dankieft&fp_sid=tool'", "const startUrl = introSeen ? 'about:blank' : 'https://higgsfield.ai/'")
+          s = s.replace('if (referralDone) {', 'if (introSeen) {')
+          s = s.replace("// First-timer: give the referral page ~2.5 s to set its cookie, then go to OAuth.", "// First-timer: briefly show Higgsfield, then go to OAuth.")
+          s = s.replace("// Only mark referral as fired after OAuth actually succeeds", "// Only mark the intro page as seen after OAuth actually succeeds")
+          s = s.replace("if (!referralDone) localStorage.setItem('hf_referral_fired', '1')", "if (!introSeen) localStorage.setItem('hf_intro_seen', '1')")
+          if 'dankieft' in s.lower() or 'fpr=' in s.lower():
+              raise SystemExit('Legacy referral marker still present in higgsfieldAuth.js')
+          p.write_text(s)
+          PY
+
+      - name: Organize demo media folders
+        run: |
+          mkdir -p public/demo/creators public/demo/gallery public/demo/campaigns
+          git mv public/camila public/demo/creators/camila || true
+          git mv public/kayla public/demo/creators/kayla || true
+          git mv public/marcus public/demo/creators/marcus || true
+          git mv public/jake public/demo/creators/jake || true
+          git mv public/brad public/demo/creators/brad || true
+          git mv public/inf public/demo/gallery/influencers || true
+          git mv public/inspiration public/demo/gallery/inspiration || true
+          git mv public/prime public/demo/campaigns/prime || true
+
+          python - <<'PY'
+          from pathlib import Path
+          replacements = {
+              '/camila/': '/demo/creators/camila/',
+              '/kayla/': '/demo/creators/kayla/',
+              '/marcus/': '/demo/creators/marcus/',
+              '/jake/': '/demo/creators/jake/',
+              '/brad/': '/demo/creators/brad/',
+              '/inf/': '/demo/gallery/influencers/',
+              '/inspiration/': '/demo/gallery/inspiration/',
+              '/prime/': '/demo/campaigns/prime/',
+          }
+          text_exts = {'.js', '.jsx', '.ts', '.tsx', '.json', '.md', '.txt', '.html', '.css'}
+          for base in [Path('src'), Path('public'), Path('docs'), Path('README.md'), Path('SETUP.txt')]:
+              paths = [base] if base.is_file() else [p for p in base.rglob('*') if p.is_file() and p.suffix in text_exts]
+              for path in paths:
+                  try:
+                      data = path.read_text()
+                  except UnicodeDecodeError:
+                      continue
+                  new = data
+                  for old, repl in replacements.items():
+                      new = new.replace(old, repl)
+                  if new != data:
+                      path.write_text(new)
+          PY
+
+          cat > public/README.md <<'EOF'
+          # Public demo assets
+
+          Demo media used by the hackathon prototype is grouped under `public/demo`:
+
+          - `public/demo/creators/` — sample fictional creator profiles and related media.
+          - `public/demo/gallery/` — landing/gallery/inspiration visuals.
+          - `public/demo/campaigns/` — product or campaign-specific sample assets.
+
+          These assets support the no-key judge demo and seeded local-first prototype data. Runtime paths intentionally stay public URL paths, for example `/demo/creators/camila/main.jpg`.
+          EOF
+
+      - name: Verify no legacy attribution markers remain
+        run: |
+          if grep -RInE 'DaanKieft|Dan Kieft|dankieft|forms\.gle/p5cBXw4sYaHPdcANA|fpr=dankieft' . --exclude-dir=.git --exclude-dir=node_modules --exclude-dir=dist; then
+            echo 'Legacy marker found; failing cleanup.'
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run production build
+        run: npm run build
+
+      - name: Remove one-time workflow and commit cleanup
+        run: |
+          git rm --ignore-unmatch .github/workflows/phase1-repo-cleanup.yml
+          if git diff --cached --quiet && git diff --quiet; then
+            echo 'No cleanup changes to commit.'
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Complete Phase 1 repo cleanup"
+          git push origin HEAD:submission-ready-polish
