@@ -177,6 +177,20 @@ The project is Vercel-ready. Connect this repository to Vercel and deploy. Verce
 
 For full generation functionality, connect the required external generation accounts in the app settings. For hackathon demos, use `/demo` so judges can review the product story without entering personal API keys.
 
+## Final Submission Materials
+
+Supporting materials are included in `docs/`:
+
+```txt
+docs/HACKATHON_SUBMISSION.md
+docs/FINAL_SUBMISSION_CHECKLIST.md
+docs/PITCH_SCRIPT.md
+docs/DEMO_VIDEO_STORYBOARD.md
+docs/SCREENSHOTS_AND_GIF_FLOW.md
+```
+
+These documents prepare the pitch, demo recording plan, screenshot/GIF list, and final operator checklist. Actual screenshots and the demo video should be captured from the live deployment after it is created.
+
 ## Submission Roadmap
 
 Before final submission:
@@ -189,8 +203,10 @@ Before final submission:
 - [x] Remove unimplemented Alibaba Cloud/Qwen claims from current-feature documentation.
 - [x] Complete Phase 1 repo cleanup: remove old agent files, clean setup docs, remove legacy attribution/referral markers, and organize demo media.
 - [x] Complete Phase 2 hackathon product polish: demo mode, landing polish, safety page, campaign planner, export demo packet, and professional loading copy.
+- [x] Prepare pitch script, demo video storyboard, screenshot/GIF guide, and final submission checklist.
 - [ ] Add Qoder, Alibaba Cloud, or Qwen only after actually using or integrating them.
-- [ ] Prepare live deployment link, demo video, screenshots, and pitch script.
+- [ ] Create and verify live deployment.
+- [ ] Record actual demo video and screenshots from the live deployment.
 
 ## Team
 
