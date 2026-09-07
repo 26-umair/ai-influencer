@@ -19,6 +19,7 @@ AI Influencer Studio solves this by helping users create a fictional brand-safe 
 - **Photo Studio** — generate lifestyle photos by selecting location, pose, time of day, outfit, props, and aspect ratio.
 - **Brand Deals workspace** — organize campaign products and generate product-focused character sheets.
 - **Judge Demo Mode** — `/demo` gives reviewers a no-login, no-API-key walkthrough of the product story, sample persona, campaign output, and safety guardrails.
+- **Responsible AI Disclosure** — `/responsible-ai` explains fictional-only use, consent expectations, AI disclosure, prohibited use cases, and a human review checklist.
 - **Local-first data storage** — project data is stored in the user's browser through localStorage, so the prototype is lightweight and quick to demo.
 - **Vercel-ready deployment** — React + Vite frontend with serverless API routes for generation proxies and supporting services.
 
@@ -33,6 +34,21 @@ Recommended safety rules for usage and judging demos:
 - Label generated creators and campaign assets as AI-generated where appropriate.
 - Avoid misleading political, medical, financial, or identity-based claims.
 - Use brand-safe fictional personas for marketing, storytelling, and prototyping.
+
+A dedicated in-app Responsible AI disclosure page is available at:
+
+```txt
+/responsible-ai
+```
+
+It covers:
+
+- fictional-first creator generation,
+- consent over copying,
+- clear AI disclosure,
+- human review before publishing,
+- allowed and prohibited use cases,
+- and Alibaba Cloud/Qwen safety roadmap items.
 
 ## Judge Demo Mode
 
@@ -53,7 +69,7 @@ This route is designed for hackathon review. It does not require Higgsfield, Cla
 
 For the hackathon submission, the product is positioned as a responsible AI marketing tool for Pakistan's youth, creators, and small businesses.
 
-Current prototype implementation includes the virtual creator workflow, image generation flow, local data layer, deployment-ready structure, and judge demo route. The Alibaba Cloud / Qwen-aligned roadmap is to use Alibaba Cloud services for:
+Current prototype implementation includes the virtual creator workflow, image generation flow, local data layer, deployment-ready structure, judge demo route, and responsible AI disclosure route. The Alibaba Cloud / Qwen-aligned roadmap is to use Alibaba Cloud services for:
 
 - persona strategy generation,
 - campaign copywriting,
@@ -80,6 +96,7 @@ src/
   pages/
     Landing.jsx           Homepage
     Demo.jsx              Judge-friendly no-key demo route
+    ResponsibleAI.jsx     Responsible AI disclosure and safety page
     Create.jsx            Guided influencer creation flow
     Influencers.jsx       Influencer dashboard and asset management
     PhotoStudio.jsx       Lifestyle image generation workflow
@@ -138,9 +155,9 @@ For full generation functionality, connect the required external generation acco
 Before final submission:
 
 - [x] Add judge-friendly demo mode.
+- [x] Add a responsible AI disclosure section inside the app UI.
 - [ ] Replace or remove unused starter/demo assets.
 - [ ] Add Alibaba Cloud/Qwen integration or a clearly documented architecture plan.
-- [ ] Add a responsible AI disclosure section inside the app UI.
 - [ ] Prepare live deployment link, demo video, screenshots, and pitch script.
 
 ## Team
