@@ -4,7 +4,7 @@ This document tracks the work needed to turn AI Influencer Studio into a clean A
 
 ## One-line Pitch
 
-AI Influencer Studio helps small brands and creators build fictional virtual influencers, generate campaign-ready visuals, and manage synthetic creator assets safely from one simple workspace.
+AI Influencer Studio helps small brands and creators build fictional virtual influencers, generate campaign-ready visuals, plan campaign content, and manage synthetic creator assets safely from one simple workspace.
 
 ## Target Users
 
@@ -20,8 +20,10 @@ AI Influencer Studio helps small brands and creators build fictional virtual inf
 3. The app generates multiple candidate looks.
 4. The user selects one look and opens the influencer dashboard.
 5. The user generates lifestyle campaign photos in Photo Studio.
-6. The user creates a brand deal asset or campaign concept.
-7. The final output becomes a reusable creator profile and a campaign asset kit.
+6. The user opens Campaign Planner to turn the creator into campaign positioning, content pillars, and sample posts.
+7. The user creates a brand deal asset or campaign concept.
+8. The user exports a Markdown demo packet with campaign summary, sample post plan, demo asset paths, and responsible AI checklist.
+9. The final output becomes a reusable creator profile and a campaign asset kit.
 
 ## What Already Works
 
@@ -32,6 +34,8 @@ AI Influencer Studio helps small brands and creators build fictional virtual inf
 - Photo Studio workflow.
 - Brand Deals workspace.
 - Judge-friendly `/demo` route.
+- Campaign Planner `/campaign-planner` route.
+- Markdown demo packet export.
 - Responsible AI `/responsible-ai` route.
 - Professional generation loading messages.
 - Clean demo asset structure under `public/demo`.
@@ -42,7 +46,7 @@ AI Influencer Studio helps small brands and creators build fictional virtual inf
 
 ## Current Technology Disclosure
 
-The current repository includes React, Vite, React Router, browser localStorage, Higgsfield generation/auth utilities, Vercel serverless API routes, and GitHub Actions build checks.
+The current repository includes React, Vite, React Router, browser localStorage, Higgsfield generation/auth utilities, Vercel serverless API routes, GitHub Actions build checks, and local browser-based Markdown export for demo packets.
 
 The project does **not** currently claim a working Alibaba Cloud, Qoder, or Qwen product integration. Those should only be added to the submission story after they are actually used or integrated in the codebase.
 
@@ -63,15 +67,15 @@ The project does **not** currently claim a working Alibaba Cloud, Qoder, or Qwen
 - Organized public demo media under `public/demo/creators`, `public/demo/gallery`, and `public/demo/campaigns`.
 - Added judge-friendly demo mode that does not require personal API keys.
 - Added in-app responsible AI disclosure and fictional-only messaging.
+- Added Campaign Planner for brand strategy, content pillars, sample posts, and safety checklist.
+- Added downloadable Markdown demo packet export from the demo and planner flows.
 - Replaced casual loading copy with professional product copy.
 - Added GitHub Actions production build check.
 - Removed unimplemented Alibaba Cloud/Qwen claims from current-feature documentation.
 
 ### Nice to Have
 
-- Campaign brief generator.
-- Urdu/English campaign copy generator.
-- Exportable PDF/ZIP demo kit.
+- Native PDF or ZIP export for demo kit.
 - Brand safety scoring.
 - Sample personas for Pakistan-focused business categories.
 - Qoder, Alibaba Cloud, or Qwen integration only if the team actually uses or implements it.
@@ -82,6 +86,8 @@ AI Influencer Studio should be presented as a working prototype for safe fiction
 
 - The product workflow exists.
 - The demo route exists.
+- Campaign planning exists as a local, no-key workflow.
+- Demo packet export exists as a Markdown browser download.
 - Responsible AI rules are visible.
 - Production build passes.
 - External generation/account setup is still required for live generation outside demo mode.
@@ -97,7 +103,7 @@ AI Influencer Studio should be presented as a working prototype for safe fiction
 
 ## Submission Description Draft
 
-AI Influencer Studio is a safe virtual creator platform for small brands, student founders, and content teams. It helps users design fictional AI influencers, generate campaign-ready visuals, and organize creator assets without hiring a full production team. The product focuses on affordability, repeatable brand identity, and responsible synthetic media use. The current prototype includes the creator workflow, dashboard, photo studio, brand workspace, demo route, responsible AI page, clean demo asset structure, and production build checks.
+AI Influencer Studio is a safe virtual creator platform for small brands, student founders, and content teams. It helps users design fictional AI influencers, generate campaign-ready visuals, plan campaign content, and organize creator assets without hiring a full production team. The product focuses on affordability, repeatable brand identity, and responsible synthetic media use. The current prototype includes the creator workflow, dashboard, photo studio, brand workspace, campaign planner, demo packet export, demo route, responsible AI page, clean demo asset structure, and production build checks.
 
 ## Final Checklist
 
@@ -105,10 +111,13 @@ AI Influencer Studio is a safe virtual creator platform for small brands, studen
 - [x] Setup guide is clean and repository-specific.
 - [x] Landing page has no unrelated attribution.
 - [x] Demo mode works without requiring judge-owned API keys.
+- [x] Campaign Planner is available inside the app.
+- [x] Export Demo Packet is available as a downloadable Markdown packet.
 - [x] Responsible AI rules are visible inside the app.
 - [x] Build passes with `npm run build` through GitHub Actions.
 - [x] Current documentation avoids claiming unimplemented Alibaba Cloud/Qoder/Qwen features.
 - [x] Phase 1 repo cleanup is complete.
+- [x] Phase 2 hackathon product polish is complete.
 - [ ] Vercel deployment is live and verified.
 - [ ] Demo video recorded.
 - [ ] Pitch script prepared.
