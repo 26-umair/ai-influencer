@@ -29,7 +29,7 @@ jobs:
 
       - name: Apply Phase 1 cleanup
         run: |
-          git rm -r --ignore-unmatch .agents .claude CLAUDE.md skills-lock.json
+          git rm -r --ignore-unmatch .agents .claude CLAUDE.md skills-lock.json docs/seedance-influencer-guide.md
 
           cat > .gitignore <<'EOF'
           node_modules/
