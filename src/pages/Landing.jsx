@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const WORDS = ['Influencer', 'Creator', 'Avatar', 'Celebrity']
+const WORDS = ['Influencer', 'Creator', 'Avatar', 'Campaign']
 const TYPE_SPEED = 75
 const DELETE_SPEED = 45
 const PAUSE_MS = 1800
@@ -38,16 +38,16 @@ function useTypewriter() {
 
 // All available images — add more paths here as you collect them
 const ALL_IMGS = [
-  '/inf/i1.png',  '/inf/i2.png',  '/inf/i3.jpg',  '/inf/i4.jpg',  '/inf/i5.png',
-  '/inf/i6.jpg',  '/inf/i7.png',  '/inf/i8.png',  '/inf/i9.png',  '/inf/i10.png',
-  '/inf/i11.png', '/inf/i12.png', '/inf/i13.png', '/inf/i14.png', '/inf/i15.png',
-  '/inf/i16.png', '/inf/i17.png', '/inf/i18.png', '/inf/i19.png', '/inf/i20.png',
-  '/inf/i21.png', '/inf/i22.png', '/inf/i23.png', '/inf/i24.png', '/inf/i25.png',
-  '/inf/i26.png', '/inf/i27.png', '/inf/i28.png', '/inf/i29.png',
-  '/inf/i30.png', '/inf/i31.png', '/inf/i32.png', '/inf/i33.png', '/inf/i34.png',
-  '/inf/i35.png', '/inf/i36.png', '/inf/i37.png', '/inf/i38.png', '/inf/i39.png',
-  '/inf/i40.png', '/inf/i41.png',
-  '/inf/i42.png', '/inf/i43.png', '/inf/i44.png', '/inf/i45.png', '/inf/i46.png',
+  '/demo/gallery/influencers/i1.png',  '/demo/gallery/influencers/i2.png',  '/demo/gallery/influencers/i3.jpg',  '/demo/gallery/influencers/i4.jpg',  '/demo/gallery/influencers/i5.png',
+  '/demo/gallery/influencers/i6.jpg',  '/demo/gallery/influencers/i7.png',  '/demo/gallery/influencers/i8.png',  '/demo/gallery/influencers/i9.png',  '/demo/gallery/influencers/i10.png',
+  '/demo/gallery/influencers/i11.png', '/demo/gallery/influencers/i12.png', '/demo/gallery/influencers/i13.png', '/demo/gallery/influencers/i14.png', '/demo/gallery/influencers/i15.png',
+  '/demo/gallery/influencers/i16.png', '/demo/gallery/influencers/i17.png', '/demo/gallery/influencers/i18.png', '/demo/gallery/influencers/i19.png', '/demo/gallery/influencers/i20.png',
+  '/demo/gallery/influencers/i21.png', '/demo/gallery/influencers/i22.png', '/demo/gallery/influencers/i23.png', '/demo/gallery/influencers/i24.png', '/demo/gallery/influencers/i25.png',
+  '/demo/gallery/influencers/i26.png', '/demo/gallery/influencers/i27.png', '/demo/gallery/influencers/i28.png', '/demo/gallery/influencers/i29.png',
+  '/demo/gallery/influencers/i30.png', '/demo/gallery/influencers/i31.png', '/demo/gallery/influencers/i32.png', '/demo/gallery/influencers/i33.png', '/demo/gallery/influencers/i34.png',
+  '/demo/gallery/influencers/i35.png', '/demo/gallery/influencers/i36.png', '/demo/gallery/influencers/i37.png', '/demo/gallery/influencers/i38.png', '/demo/gallery/influencers/i39.png',
+  '/demo/gallery/influencers/i40.png', '/demo/gallery/influencers/i41.png',
+  '/demo/gallery/influencers/i42.png', '/demo/gallery/influencers/i43.png', '/demo/gallery/influencers/i44.png', '/demo/gallery/influencers/i45.png', '/demo/gallery/influencers/i46.png',
 ]
 
 // 6 card slots — position, rotation, size, float timing
@@ -183,7 +183,7 @@ export default function Landing() {
             <span style={{ position:'absolute', width:10, height:10, borderRadius:'50%', background:'#34C759', opacity:0.35, animation:'ping 1.8s ease-out infinite' }}/>
             <span style={{ width:7, height:7, borderRadius:'50%', background:'#34C759', flexShrink:0 }}/>
           </span>
-          Made by Dan Kieft
+          Alibaba Cloud AI Hackathon Prototype
         </div>
 
         <h1 style={{ fontSize:'clamp(62px,10vw,104px)', fontWeight:800, letterSpacing:'-3.5px', lineHeight:1.0, color:'#fff', marginBottom:2 }}>
@@ -200,8 +200,8 @@ export default function Landing() {
           <span style={{ display:'inline-block', width:5, height:'0.72em', background:'linear-gradient(to bottom, #EC4899, #A855F7)', marginLeft:6, borderRadius:3, animation:'blink 1s step-end infinite', verticalAlign:'middle', flexShrink:0 }}/>
         </div>
 
-        <p style={{ fontSize:20, color:'rgba(255,255,255,0.38)', lineHeight:1.65, margin:'0 auto 52px', maxWidth:420, fontWeight:400, letterSpacing:'-0.1px' }}>
-          Build, manage, and grow your AI influencers.
+        <p style={{ fontSize:20, color:'rgba(255,255,255,0.38)', lineHeight:1.65, margin:'0 auto 52px', maxWidth:480, fontWeight:400, letterSpacing:'-0.1px' }}>
+          Build fictional virtual creators, generate campaign-ready visuals, and manage brand content safely.
         </p>
 
         <button
