@@ -34,6 +34,7 @@ AI Influencer Studio helps small brands and creators build fictional virtual inf
 - Judge-friendly `/demo` route.
 - Responsible AI `/responsible-ai` route.
 - Professional generation loading messages.
+- Clean demo asset structure under `public/demo`.
 - GitHub Actions production build check.
 - Higgsfield OAuth and generation proxy layer.
 - Serverless API routes for generation, image proxy, Claude proxy, search, and rate limiting.
@@ -49,13 +50,17 @@ The project does **not** currently claim a working Alibaba Cloud, Qoder, or Qwen
 
 ### Must Fix Before Final Submission
 
-- Remove or reorganize unused starter assets and hardcoded legacy demo media.
 - Prepare live deployment link and demo walkthrough.
 - Verify the deployed app after merging.
 - Make the repository accessible according to the organizers' submission rules.
 
 ### Already Improved in PR #1
 
+- Rewrote README and setup documentation for the hackathon submission.
+- Removed unrelated/legacy attribution references and old setup material.
+- Removed tracked `.agents`, `CLAUDE.md`, `skills-lock.json`, and legacy Seedance guide content.
+- Removed the old Higgsfield referral URL and helper copy.
+- Organized public demo media under `public/demo/creators`, `public/demo/gallery`, and `public/demo/campaigns`.
 - Added judge-friendly demo mode that does not require personal API keys.
 - Added in-app responsible AI disclosure and fictional-only messaging.
 - Replaced casual loading copy with professional product copy.
@@ -92,16 +97,18 @@ AI Influencer Studio should be presented as a working prototype for safe fiction
 
 ## Submission Description Draft
 
-AI Influencer Studio is a safe virtual creator platform for small brands, student founders, and content teams. It helps users design fictional AI influencers, generate campaign-ready visuals, and organize creator assets without hiring a full production team. The product focuses on affordability, repeatable brand identity, and responsible synthetic media use. The current prototype includes the creator workflow, dashboard, photo studio, brand workspace, demo route, responsible AI page, and production build checks.
+AI Influencer Studio is a safe virtual creator platform for small brands, student founders, and content teams. It helps users design fictional AI influencers, generate campaign-ready visuals, and organize creator assets without hiring a full production team. The product focuses on affordability, repeatable brand identity, and responsible synthetic media use. The current prototype includes the creator workflow, dashboard, photo studio, brand workspace, demo route, responsible AI page, clean demo asset structure, and production build checks.
 
 ## Final Checklist
 
 - [x] README is clean and hackathon-focused.
+- [x] Setup guide is clean and repository-specific.
 - [x] Landing page has no unrelated attribution.
 - [x] Demo mode works without requiring judge-owned API keys.
 - [x] Responsible AI rules are visible inside the app.
 - [x] Build passes with `npm run build` through GitHub Actions.
 - [x] Current documentation avoids claiming unimplemented Alibaba Cloud/Qoder/Qwen features.
+- [x] Phase 1 repo cleanup is complete.
 - [ ] Vercel deployment is live and verified.
 - [ ] Demo video recorded.
 - [ ] Pitch script prepared.
