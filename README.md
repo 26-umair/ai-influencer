@@ -19,7 +19,8 @@ AI Influencer Studio solves this by helping users create a fictional brand-safe 
 - **Photo Studio** — generate lifestyle photos by selecting location, pose, time of day, outfit, props, and aspect ratio.
 - **Brand Deals workspace** — organize campaign products and generate product-focused character sheets.
 - **Judge Demo Mode** — `/demo` gives reviewers a no-login, no-API-key walkthrough of the product story, sample persona, campaign output, and safety guardrails.
-- **Responsible AI Disclosure** — `/responsible-ai` explains fictional-only use, consent expectations, AI disclosure, prohibited use cases, and a human review checklist.
+- **Responsible AI page** — `/responsible-ai` explains fictional-only use, consent, disclosure, prohibited uses, and human review.
+- **Automated build check** — GitHub Actions runs `npm ci` and `npm run build` on pull requests and pushes.
 - **Local-first data storage** — project data is stored in the user's browser through localStorage, so the prototype is lightweight and quick to demo.
 - **Vercel-ready deployment** — React + Vite frontend with serverless API routes for generation proxies and supporting services.
 
@@ -34,21 +35,6 @@ Recommended safety rules for usage and judging demos:
 - Label generated creators and campaign assets as AI-generated where appropriate.
 - Avoid misleading political, medical, financial, or identity-based claims.
 - Use brand-safe fictional personas for marketing, storytelling, and prototyping.
-
-A dedicated in-app Responsible AI disclosure page is available at:
-
-```txt
-/responsible-ai
-```
-
-It covers:
-
-- fictional-first creator generation,
-- consent over copying,
-- clear AI disclosure,
-- human review before publishing,
-- allowed and prohibited use cases,
-- and Alibaba Cloud/Qwen safety roadmap items.
 
 ## Judge Demo Mode
 
@@ -65,11 +51,21 @@ This route is designed for hackathon review. It does not require Higgsfield, Cla
 - the safety and disclosure rules,
 - and the expected campaign output package.
 
+## Responsible AI Disclosure
+
+A dedicated safety page is available at:
+
+```txt
+/responsible-ai
+```
+
+This route explains the project's safe-use position: fictional-first creator design, consent-based references, clear AI disclosure, prohibited use cases, and human review before publishing.
+
 ## Hackathon Alignment
 
 For the hackathon submission, the product is positioned as a responsible AI marketing tool for Pakistan's youth, creators, and small businesses.
 
-Current prototype implementation includes the virtual creator workflow, image generation flow, local data layer, deployment-ready structure, judge demo route, and responsible AI disclosure route. The Alibaba Cloud / Qwen-aligned roadmap is to use Alibaba Cloud services for:
+Current prototype implementation includes the virtual creator workflow, image generation flow, local data layer, deployment-ready structure, judge demo route, responsible AI disclosure route, and automated build check. The Alibaba Cloud / Qwen-aligned roadmap is to use Alibaba Cloud services for:
 
 - persona strategy generation,
 - campaign copywriting,
@@ -84,11 +80,14 @@ Current prototype implementation includes the virtual creator workflow, image ge
 - **State/Data:** Browser localStorage with React context providers
 - **Generation Layer:** Higgsfield MCP/OAuth integration, OpenAI-compatible image model option, Nano Banana model options
 - **Serverless API:** Vercel functions for Higgsfield proxy, Claude proxy, image proxy, search proxy, and rate limiting
+- **CI:** GitHub Actions build workflow
 - **Deployment:** Vercel-ready configuration
 
 ## Project Structure
 
 ```txt
+.github/workflows/
+  build.yml               Automated production build check
 src/
   App.jsx                 App shell, routes, analytics
   main.jsx                React entry point
@@ -96,7 +95,7 @@ src/
   pages/
     Landing.jsx           Homepage
     Demo.jsx              Judge-friendly no-key demo route
-    ResponsibleAI.jsx     Responsible AI disclosure and safety page
+    ResponsibleAI.jsx     Responsible AI disclosure route
     Create.jsx            Guided influencer creation flow
     Influencers.jsx       Influencer dashboard and asset management
     PhotoStudio.jsx       Lifestyle image generation workflow
@@ -144,6 +143,18 @@ Preview production build locally:
 npm run preview
 ```
 
+## Automated Build Check
+
+GitHub Actions runs the production build automatically on pull requests and pushes to `main` or `submission-ready-polish`.
+
+The workflow is located at:
+
+```txt
+.github/workflows/build.yml
+```
+
+It installs dependencies with `npm ci` and verifies the app with `npm run build`.
+
 ## Deployment
 
 The project is Vercel-ready. Connect this repository to Vercel and deploy. Vercel will detect the Vite frontend and the `api/` serverless functions automatically.
@@ -156,6 +167,7 @@ Before final submission:
 
 - [x] Add judge-friendly demo mode.
 - [x] Add a responsible AI disclosure section inside the app UI.
+- [x] Add automated production build check.
 - [ ] Replace or remove unused starter/demo assets.
 - [ ] Add Alibaba Cloud/Qwen integration or a clearly documented architecture plan.
 - [ ] Prepare live deployment link, demo video, screenshots, and pitch script.
