@@ -54,9 +54,10 @@ The project does **not** currently claim a working Alibaba Cloud, Qoder, or Qwen
 
 ### Must Fix Before Final Submission
 
-- Prepare live deployment link and demo walkthrough.
-- Verify the deployed app after merging.
-- Make the repository accessible according to the organizers' submission rules.
+- Create and verify the live Vercel deployment.
+- Make the repository public or grant judge access according to the organizers' submission rules.
+- Record the actual demo video from the deployed app.
+- Capture actual screenshots/GIF from the deployed app.
 
 ### Already Improved in PR #1
 
@@ -71,6 +72,7 @@ The project does **not** currently claim a working Alibaba Cloud, Qoder, or Qwen
 - Added downloadable Markdown demo packet export from the demo and planner flows.
 - Replaced casual loading copy with professional product copy.
 - Added GitHub Actions production build check.
+- Added final pitch script, demo video storyboard, screenshot/GIF guide, and final submission checklist.
 - Removed unimplemented Alibaba Cloud/Qwen claims from current-feature documentation.
 
 ### Nice to Have
@@ -79,6 +81,15 @@ The project does **not** currently claim a working Alibaba Cloud, Qoder, or Qwen
 - Brand safety scoring.
 - Sample personas for Pakistan-focused business categories.
 - Qoder, Alibaba Cloud, or Qwen integration only if the team actually uses or implements it.
+
+## Phase 4 Materials Prepared
+
+The repo now contains the final submission support documents:
+
+- `docs/PITCH_SCRIPT.md` — 5–7 minute pitch script.
+- `docs/DEMO_VIDEO_STORYBOARD.md` — short demo video shot-by-shot plan.
+- `docs/SCREENSHOTS_AND_GIF_FLOW.md` — required screenshot list and optional GIF flow.
+- `docs/FINAL_SUBMISSION_CHECKLIST.md` — operator checklist before portal submission.
 
 ## Honest Hackathon Positioning
 
@@ -118,7 +129,11 @@ AI Influencer Studio is a safe virtual creator platform for small brands, studen
 - [x] Current documentation avoids claiming unimplemented Alibaba Cloud/Qoder/Qwen features.
 - [x] Phase 1 repo cleanup is complete.
 - [x] Phase 2 hackathon product polish is complete.
+- [x] Pitch script is prepared in `docs/PITCH_SCRIPT.md`.
+- [x] Demo video storyboard is prepared in `docs/DEMO_VIDEO_STORYBOARD.md`.
+- [x] Screenshot/GIF shot list is prepared in `docs/SCREENSHOTS_AND_GIF_FLOW.md`.
+- [x] Final submission checklist is prepared in `docs/FINAL_SUBMISSION_CHECKLIST.md`.
 - [ ] Vercel deployment is live and verified.
-- [ ] Demo video recorded.
-- [ ] Pitch script prepared.
+- [ ] Actual demo video is recorded from the live deployment.
+- [ ] Actual screenshots/GIF are captured from the live deployment.
 - [ ] GitHub repository access is ready for judges.
