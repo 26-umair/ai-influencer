@@ -8,6 +8,7 @@ import Nav from './components/Nav'
 import Landing from './pages/Landing'
 import Demo from './pages/Demo'
 import ResponsibleAI from './pages/ResponsibleAI'
+import CampaignPlanner from './pages/CampaignPlanner'
 import Influencers from './pages/Influencers'
 import Inspiration from './pages/Inspiration'
 import BrandDeals from './pages/BrandDeals'
@@ -34,6 +35,7 @@ export default function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/demo" element={<Demo />} />
         <Route path="/responsible-ai" element={<ResponsibleAI />} />
+        <Route path="/campaign-planner" element={<CampaignPlanner />} />
         <Route path="/influencers" element={<Influencers />} />
         <Route path="/inspiration" element={<Inspiration />} />
         <Route path="/brand-deals" element={<BrandDeals />} />
