@@ -2,6 +2,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import { useTheme } from '../context/theme'
 
 const links = [
+  { to: '/demo', label: 'Demo Mode' },
   { to: '/influencers', label: 'Influencers' },
   { to: '/inspiration', label: 'Inspiration' },
   { to: '/brand-deals', label: 'Brand Deals' },
@@ -65,7 +66,7 @@ export default function Nav() {
       </NavLink>
 
       {/* Nav links */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+      <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         {links.map(l => (
           <NavLink key={l.to} to={l.to} className="nav-link" style={({ isActive }) => ({
             padding: '6px 14px',
@@ -141,6 +142,12 @@ export default function Nav() {
           </svg>
         </NavLink>
       </div>
+
+      <style>{`
+        @media (max-width: 860px) {
+          .nav-links { display: none !important; }
+        }
+      `}</style>
     </nav>
   )
 }
