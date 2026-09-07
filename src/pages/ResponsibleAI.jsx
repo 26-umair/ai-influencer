@@ -41,6 +41,12 @@ const CHECKLIST = [
   'Has a human reviewed the final output before publishing?',
 ]
 
+const CURRENT_SAFETY_COVERAGE = [
+  ['18+ creator rule', 'The create flow prevents under-18 influencer profiles during setup.'],
+  ['Visible safety page', 'The app includes a dedicated responsible AI page for judges and users.'],
+  ['Demo-safe explanation', 'The demo route explains the fictional creator workflow without asking judges for private API keys.'],
+]
+
 function Card({ children, tone = 'default' }) {
   const border = tone === 'danger' ? 'rgba(248,113,113,0.28)' : tone === 'safe' ? 'rgba(52,211,153,0.25)' : 'rgba(255,255,255,0.10)'
   const bg = tone === 'danger' ? 'rgba(248,113,113,0.06)' : tone === 'safe' ? 'rgba(52,211,153,0.06)' : 'rgba(255,255,255,0.06)'
@@ -221,16 +227,12 @@ export default function ResponsibleAI() {
 
         <section>
           <SectionTitle
-            eyebrow="Hackathon roadmap"
-            title="Where Alibaba Cloud and Qwen fit next"
-            text="The current prototype already has the product workflow. The next AI layer should make responsible decisions more visible and automated."
+            eyebrow="Current implementation"
+            title="What is actually present today"
+            text="This section is intentionally limited to safety-related capabilities already visible in the current prototype."
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16 }}>
-            {[
-              ['Persona safety scoring', 'Qwen can review creator briefs for impersonation, age, and sensitive-claim risks before generation.'],
-              ['Campaign copy guardrails', 'Qwen can suggest safer wording, disclosure labels, and brand-safe captions in English and Urdu.'],
-              ['Reviewable audit trail', 'Alibaba Cloud storage can preserve generated campaign packets, prompts, and safety checks for judges or teams.'],
-            ].map(([title, text]) => (
+            {CURRENT_SAFETY_COVERAGE.map(([title, text]) => (
               <Card key={title}>
                 <h3 style={{ fontSize: 18, letterSpacing: '-0.4px', margin: '0 0 10px', color: '#fff' }}>{title}</h3>
                 <p style={{ fontSize: 14, lineHeight: 1.7, margin: 0, color: 'rgba(255,255,255,0.58)' }}>{text}</p>
