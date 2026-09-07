@@ -2,7 +2,7 @@
 
 AI Influencer Studio is a web application for creating and managing fictional virtual influencers for brand campaigns, social content, and visual storytelling.
 
-The project is being prepared for **Alibaba Cloud AI Hackathon Pakistan 2026** as a safe virtual creator platform: users define a fictional creator, build a consistent identity, generate campaign-ready visuals, and organize content assets in one local-first workspace.
+The project is being prepared for **Alibaba Cloud AI Hackathon Pakistan 2026** as a safe virtual creator platform: users define a fictional creator, build a consistent identity, generate campaign-ready visuals, plan campaign content, and export demo-ready campaign material from one local-first workspace.
 
 ## Problem
 
@@ -18,7 +18,9 @@ AI Influencer Studio solves this by helping users create a fictional brand-safe 
 - **Influencer management dashboard** — save, view, edit, regenerate, replace, and download creator assets.
 - **Photo Studio** — generate lifestyle photos by selecting location, pose, time of day, outfit, props, and aspect ratio.
 - **Brand Deals workspace** — organize campaign products and generate product-focused character sheets.
-- **Judge Demo Mode** — `/demo` gives reviewers a no-login, no-API-key walkthrough of the product story, sample persona, campaign output, and safety guardrails.
+- **Campaign Planner** — `/campaign-planner` turns a creator, brand, product, audience, tone, and channel brief into campaign positioning, content pillars, post ideas, and a responsible AI checklist without external API keys.
+- **Export Demo Packet** — judges and teammates can download a Markdown demo packet containing campaign summary, concept, sample posts, asset paths, and responsible AI checklist.
+- **Judge Demo Mode** — `/demo` gives reviewers a no-login, no-API-key walkthrough of the product story, sample persona, campaign output, safety guardrails, and demo packet export.
 - **Responsible AI page** — `/responsible-ai` explains fictional-only use, consent, disclosure, prohibited uses, and human review.
 - **Clean demo asset structure** — public demo media is grouped under `public/demo/creators`, `public/demo/gallery`, and `public/demo/campaigns`.
 - **Automated build check** — GitHub Actions runs `npm ci` and `npm run build` on pull requests and pushes.
@@ -50,7 +52,25 @@ This route is designed for hackathon review. It does not require Higgsfield, Cla
 - the fictional creator workflow,
 - the brand campaign use case,
 - the safety and disclosure rules,
+- the campaign planner,
 - and the expected campaign output package.
+
+## Campaign Planner and Demo Packet
+
+A dedicated planner is available at:
+
+```txt
+/campaign-planner
+```
+
+The planner is intentionally local-first and does not claim external model integration. It helps judges see the product as more than an avatar generator by showing a complete brand workflow:
+
+- campaign brief input,
+- campaign positioning,
+- content pillars,
+- sample post plan,
+- responsible AI checklist,
+- and downloadable Markdown demo packet.
 
 ## Responsible AI Disclosure
 
@@ -64,7 +84,7 @@ This route explains the project's safe-use position: fictional-first creator des
 
 ## Hackathon Fit
 
-This repository is being prepared as a hackathon submission candidate. The current implemented prototype includes the virtual creator workflow, image generation flow, local data layer, deployment-ready structure, judge demo route, responsible AI disclosure route, cleaned demo asset structure, and automated build check.
+This repository is being prepared as a hackathon submission candidate. The current implemented prototype includes the virtual creator workflow, image generation flow, local data layer, deployment-ready structure, judge demo route, campaign planner, demo packet export, responsible AI disclosure route, cleaned demo asset structure, and automated build check.
 
 This README only claims technologies and features that are already present in the repository. Alibaba Cloud, Qoder, and Qwen are not listed as implemented product dependencies unless they are actually integrated in a later commit.
 
@@ -89,6 +109,7 @@ src/
   pages/
     Landing.jsx           Homepage
     Demo.jsx              Judge-friendly no-key demo route
+    CampaignPlanner.jsx   Local campaign planner and demo packet export
     ResponsibleAI.jsx     Responsible AI disclosure route
     Create.jsx            Guided influencer creation flow
     Influencers.jsx       Influencer dashboard and asset management
@@ -99,7 +120,7 @@ src/
     AuthCallback.jsx      OAuth callback handler
   components/             Reusable UI components
   context/                Theme provider
-  utils/                  Prompt builders, generation APIs, auth, image helpers
+  utils/                  Prompt builders, generation APIs, auth, image helpers, demo packet export utility
 api/                       Serverless API functions
 lib/                       Shared server utilities
 docs/                      Technical and submission references
@@ -162,9 +183,12 @@ Before final submission:
 
 - [x] Add judge-friendly demo mode.
 - [x] Add a responsible AI disclosure section inside the app UI.
+- [x] Add campaign planner for brand strategy and sample post planning.
+- [x] Add downloadable Markdown demo packet export.
 - [x] Add automated production build check.
 - [x] Remove unimplemented Alibaba Cloud/Qwen claims from current-feature documentation.
 - [x] Complete Phase 1 repo cleanup: remove old agent files, clean setup docs, remove legacy attribution/referral markers, and organize demo media.
+- [x] Complete Phase 2 hackathon product polish: demo mode, landing polish, safety page, campaign planner, export demo packet, and professional loading copy.
 - [ ] Add Qoder, Alibaba Cloud, or Qwen only after actually using or integrating them.
 - [ ] Prepare live deployment link, demo video, screenshots, and pitch script.
 
