@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom'
+import { buildDemoPacketMarkdown, DEFAULT_DEMO_PACKET, downloadTextFile } from '../utils/demoPacket'
 
 const SAMPLE_IMAGES = [
   '/demo/creators/camila/main.jpg',
@@ -69,6 +70,10 @@ function Pill({ children }) {
 export default function Demo() {
   const navigate = useNavigate()
 
+  function exportDemoPacket() {
+    downloadTextFile('ai-influencer-studio-demo-packet.md', buildDemoPacketMarkdown(DEFAULT_DEMO_PACKET))
+  }
+
   return (
     <div style={{ minHeight: '100vh', paddingTop: 'var(--nav-h)', background: '#07070E', color: '#fff' }}>
       <section style={{
@@ -113,7 +118,7 @@ export default function Demo() {
                   cursor: 'pointer',
                   boxShadow: '0 10px 32px rgba(139,92,246,0.35)',
                 }}>Open creator builder →</button>
-                <button onClick={() => navigate('/influencers')} style={{
+                <button onClick={() => navigate('/campaign-planner')} style={{
                   border: '1px solid rgba(255,255,255,0.16)',
                   borderRadius: 999,
                   padding: '14px 24px',
@@ -122,7 +127,17 @@ export default function Demo() {
                   fontSize: 14,
                   fontWeight: 800,
                   cursor: 'pointer',
-                }}>View saved influencers</button>
+                }}>Open campaign planner</button>
+                <button onClick={exportDemoPacket} style={{
+                  border: '1px solid rgba(255,255,255,0.16)',
+                  borderRadius: 999,
+                  padding: '14px 24px',
+                  background: 'rgba(255,255,255,0.08)',
+                  color: '#fff',
+                  fontSize: 14,
+                  fontWeight: 800,
+                  cursor: 'pointer',
+                }}>Export demo packet ↓</button>
               </div>
             </div>
 
@@ -151,7 +166,7 @@ export default function Demo() {
             <Stat value="4" label="demo stages" />
             <Stat value="0" label="keys needed" />
             <Stat value="18+" label="safety rule" />
-            <Stat value="1" label="brand kit" />
+            <Stat value="1" label="export packet" />
           </div>
         </div>
       </section>
@@ -215,7 +230,11 @@ export default function Demo() {
               <div style={{ color: '#C4B5FD', fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.7px', marginBottom: 7 }}>Campaign output preview</div>
               <h2 style={{ margin: 0, fontSize: 26, letterSpacing: '-0.8px' }}>From one fictional persona to a complete brand asset pack</h2>
             </div>
-            <button onClick={() => navigate('/brand-deals')} style={{ border: '1px solid rgba(255,255,255,0.16)', borderRadius: 999, padding: '11px 18px', background: 'rgba(255,255,255,0.08)', color: '#fff', fontSize: 13, fontWeight: 800, cursor: 'pointer' }}>Open brand deals →</button>
+            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+              <button onClick={() => navigate('/brand-deals')} style={{ border: '1px solid rgba(255,255,255,0.16)', borderRadius: 999, padding: '11px 18px', background: 'rgba(255,255,255,0.08)', color: '#fff', fontSize: 13, fontWeight: 800, cursor: 'pointer' }}>Open brand deals →</button>
+              <button onClick={() => navigate('/campaign-planner')} style={{ border: '1px solid rgba(255,255,255,0.16)', borderRadius: 999, padding: '11px 18px', background: 'rgba(255,255,255,0.08)', color: '#fff', fontSize: 13, fontWeight: 800, cursor: 'pointer' }}>Plan campaign →</button>
+              <button onClick={exportDemoPacket} style={{ border: '1px solid rgba(255,255,255,0.16)', borderRadius: 999, padding: '11px 18px', background: 'rgba(255,255,255,0.08)', color: '#fff', fontSize: 13, fontWeight: 800, cursor: 'pointer' }}>Export packet ↓</button>
+            </div>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6,1fr)', gap: 10 }} className="demo-output-grid">
             {SAMPLE_IMAGES.map(src => (
