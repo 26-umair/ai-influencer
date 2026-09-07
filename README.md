@@ -210,4 +210,4 @@ Before final submission:
 
 ## Team
 
-Built by Muhammad Umair and team for Alibaba Cloud AI Hackathon Pakistan 2026.
+Built by Muhammad Umair Meo and Rehmat Khan for Alibaba Cloud AI Hackathon Pakistan 2026.
