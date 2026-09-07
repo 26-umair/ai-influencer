@@ -20,6 +20,7 @@ AI Influencer Studio solves this by helping users create a fictional brand-safe 
 - **Brand Deals workspace** — organize campaign products and generate product-focused character sheets.
 - **Judge Demo Mode** — `/demo` gives reviewers a no-login, no-API-key walkthrough of the product story, sample persona, campaign output, and safety guardrails.
 - **Responsible AI page** — `/responsible-ai` explains fictional-only use, consent, disclosure, prohibited uses, and human review.
+- **Clean demo asset structure** — public demo media is grouped under `public/demo/creators`, `public/demo/gallery`, and `public/demo/campaigns`.
 - **Automated build check** — GitHub Actions runs `npm ci` and `npm run build` on pull requests and pushes.
 - **Local-first data storage** — project data is stored in the user's browser through localStorage, so the prototype is lightweight and quick to demo.
 - **Vercel-ready deployment** — React + Vite frontend with serverless API routes for generation proxies and supporting services.
@@ -63,7 +64,7 @@ This route explains the project's safe-use position: fictional-first creator des
 
 ## Hackathon Fit
 
-This repository is being prepared as a hackathon submission candidate. The current implemented prototype includes the virtual creator workflow, image generation flow, local data layer, deployment-ready structure, judge demo route, responsible AI disclosure route, and automated build check.
+This repository is being prepared as a hackathon submission candidate. The current implemented prototype includes the virtual creator workflow, image generation flow, local data layer, deployment-ready structure, judge demo route, responsible AI disclosure route, cleaned demo asset structure, and automated build check.
 
 This README only claims technologies and features that are already present in the repository. Alibaba Cloud, Qoder, and Qwen are not listed as implemented product dependencies unless they are actually integrated in a later commit.
 
@@ -101,8 +102,9 @@ src/
   utils/                  Prompt builders, generation APIs, auth, image helpers
 api/                       Serverless API functions
 lib/                       Shared server utilities
-docs/                      Technical and prompt references
-public/                    Demo assets and seed media
+docs/                      Technical and submission references
+public/
+  demo/                   Organized sample media for judge demo and seeded prototype data
 ```
 
 ## Local Development
@@ -162,7 +164,7 @@ Before final submission:
 - [x] Add a responsible AI disclosure section inside the app UI.
 - [x] Add automated production build check.
 - [x] Remove unimplemented Alibaba Cloud/Qwen claims from current-feature documentation.
-- [ ] Replace or remove unused starter/demo assets.
+- [x] Complete Phase 1 repo cleanup: remove old agent files, clean setup docs, remove legacy attribution/referral markers, and organize demo media.
 - [ ] Add Qoder, Alibaba Cloud, or Qwen only after actually using or integrating them.
 - [ ] Prepare live deployment link, demo video, screenshots, and pitch script.
 
