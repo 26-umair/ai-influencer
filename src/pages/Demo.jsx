@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 
 const SAMPLE_IMAGES = [
-  '/camila/main.jpg',
-  '/camila/photos/p1.png',
-  '/camila/photos/p4.png',
-  '/camila/photos/p8.png',
-  '/camila/brand_deals/swatch_original.png',
-  '/camila/brand_deals/swatch_sheet.png',
+  '/demo/creators/camila/main.jpg',
+  '/demo/creators/camila/photos/p1.png',
+  '/demo/creators/camila/photos/p4.png',
+  '/demo/creators/camila/photos/p8.png',
+  '/demo/creators/camila/brand_deals/swatch_original.png',
+  '/demo/creators/camila/brand_deals/swatch_sheet.png',
 ]
 
 const SAFETY_CHECKS = [

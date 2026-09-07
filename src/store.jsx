@@ -125,10 +125,10 @@ const KAYLA_SEED = {
   gender: 'Female',
   type: 'Influencer',
   createdAt: 1715000000000,
-  mainImage: '/kayla/main.jpg',
-  characterSheetImage: '/kayla/sheet.jpg',
-  closeUpImage1: '/kayla/closeup1.jpg',
-  closeUpImage2: '/kayla/closeup2.jpg',
+  mainImage: '/demo/creators/kayla/main.jpg',
+  characterSheetImage: '/demo/creators/kayla/sheet.jpg',
+  closeUpImage1: '/demo/creators/kayla/closeup1.jpg',
+  closeUpImage2: '/demo/creators/kayla/closeup2.jpg',
   prompt: '',
   age: '18',
   backstory: 'wanna be influencer',
@@ -159,10 +159,10 @@ const MARCUS_SEED = {
   gender: 'Male',
   type: 'Influencer',
   createdAt: 1715000002000,
-  mainImage: '/marcus/main.png',
-  characterSheetImage: '/marcus/sheet.png',
-  closeUpImage1: '/marcus/closeup1.png',
-  closeUpImage2: '/marcus/closeup2.png',
+  mainImage: '/demo/creators/marcus/main.png',
+  characterSheetImage: '/demo/creators/marcus/sheet.png',
+  closeUpImage1: '/demo/creators/marcus/closeup1.png',
+  closeUpImage2: '/demo/creators/marcus/closeup2.png',
   prompt: '',
   age: '22',
   backstory: 'loves tech since he was young',
@@ -183,7 +183,7 @@ const MARCUS_SEED = {
   wardrobeSlots: [],
   physicalDesc: 'Latino, short black hair, brown eyes, olive skin tone, average build',
   generationHistory: [
-    { id: 'marcus-video-1', type: 'video', label: 'Video', url: '/marcus/video1.mp4', date: 1748248415000 },
+    { id: 'marcus-video-1', type: 'video', label: 'Video', url: '/demo/creators/marcus/video1.mp4', date: 1748248415000 },
   ],
 }
 
@@ -193,10 +193,10 @@ const CAMILA_SEED = {
   gender: 'Female',
   type: 'Influencer',
   createdAt: 1715000001000,
-  mainImage: '/camila/main.jpg',
-  characterSheetImage: '/camila/sheet.jpg',
-  closeUpImage1: '/camila/closeup1.png',
-  closeUpImage2: '/camila/closeup2.png',
+  mainImage: '/demo/creators/camila/main.jpg',
+  characterSheetImage: '/demo/creators/camila/sheet.jpg',
+  closeUpImage1: '/demo/creators/camila/closeup1.png',
+  closeUpImage2: '/demo/creators/camila/closeup2.png',
   prompt: 'Candid iPhone photo of @image1, wearing the complete outfit from @image2, reproducing all clothing, headwear, and accessories exactly. Match skin texture and facial detail from @image3 and @image4. Mid-action — mid-laugh, mid-sip, mid-step, or mid-reach — body fully committed to the action, expression caught at the apex. Eyes can be on lens (late-arrival) or completely off-axis. Hands engaged with the action, not posed. Expression: direct and serious — neutral mouth at rest, steady gaze into the lens, no smile. Composed and self-assured. Eyes directed off-axis — looking to the side or slightly above the camera, as if unaware of being photographed. A small front window table, street traffic soft and blurred outside the glass, a half-drunk flat white on the table beside her. Soft morning window light from one side, cool and directional. Eye-level, 24mm, handheld. 9:16, chest-up framing. Deep focus, no bokeh, photorealistic. No other people in frame.',
   age: '22',
   backstory: "Camilla got into fitness relatively young, but after realizing she wasn't passionate in personal training clients in the gym, she switched careers to teaching yoga classes.",
@@ -215,18 +215,18 @@ const CAMILA_SEED = {
   homeImages: [],
   brandDealImages: [],
   wardrobeSlots: [
-    { id: 'camila-wardrobe-sporty', name: 'sporty fit', image: '/camila/wardrobe/sporty_fit.png' },
-    { id: 'camila-wardrobe-yoga',   name: 'yoga fit',   image: '/camila/wardrobe/yoga_fit.png'   },
+    { id: 'camila-wardrobe-sporty', name: 'sporty fit', image: '/demo/creators/camila/wardrobe/sporty_fit.png' },
+    { id: 'camila-wardrobe-yoga',   name: 'yoga fit',   image: '/demo/creators/camila/wardrobe/yoga_fit.png'   },
   ],
   brandDeals: [
-    { id: 'camila-deal-swatch', brand: 'swatch', category: 'fashion', image: '/camila/brand_deals/swatch_original.png', images: ['/camila/brand_deals/swatch_original.png'], characterSheet: '/camila/brand_deals/swatch_sheet.png' },
+    { id: 'camila-deal-swatch', brand: 'swatch', category: 'fashion', image: '/demo/creators/camila/brand_deals/swatch_original.png', images: ['/demo/creators/camila/brand_deals/swatch_original.png'], characterSheet: '/demo/creators/camila/brand_deals/swatch_sheet.png' },
   ],
   physicalDesc: 'Latina, medium-length wavy brunette hair with side-swept bangs, brown eyes, olive skin tone, slim athletic build',
   generationHistory: [
-    { id: 'camila-video-1', type: 'video', label: 'Video', url: '/camila/videos/v1.mp4', date: 1748177579000 },
-    { id: 'camila-video-2', type: 'video', label: 'Video', url: '/camila/videos/v2.mp4', date: 1748213180000 },
-    { id: 'camila-video-3', type: 'video', label: 'Video', url: '/camila/videos/v3.mp4', date: 1748216854000 },
-    { id: 'camila-video-4', type: 'video', label: 'Video', url: '/camila/videos/v4.mp4', date: 1748208318000 },
+    { id: 'camila-video-1', type: 'video', label: 'Video', url: '/demo/creators/camila/videos/v1.mp4', date: 1748177579000 },
+    { id: 'camila-video-2', type: 'video', label: 'Video', url: '/demo/creators/camila/videos/v2.mp4', date: 1748213180000 },
+    { id: 'camila-video-3', type: 'video', label: 'Video', url: '/demo/creators/camila/videos/v3.mp4', date: 1748216854000 },
+    { id: 'camila-video-4', type: 'video', label: 'Video', url: '/demo/creators/camila/videos/v4.mp4', date: 1748208318000 },
   ],
 }
 
@@ -404,11 +404,11 @@ try {
 // Step 3: Inject Camila's 11 photos into photo_studio_history (where the Photos tab actually reads from)
 try {
   const CAMILA_PHOTO_URLS = [
-    '/camila/photos/p1.png', '/camila/photos/p2.png', '/camila/photos/p3.png',
-    '/camila/photos/p4.png', '/camila/photos/p5.png', '/camila/photos/p6.png',
-    '/camila/photos/p7.png', '/camila/photos/p8.png', '/camila/photos/p9.png',
-    '/camila/photos/p10.png', '/camila/photos/p11.png',
-    '/camila/photos/p12.png', '/camila/photos/p13.png',
+    '/demo/creators/camila/photos/p1.png', '/demo/creators/camila/photos/p2.png', '/demo/creators/camila/photos/p3.png',
+    '/demo/creators/camila/photos/p4.png', '/demo/creators/camila/photos/p5.png', '/demo/creators/camila/photos/p6.png',
+    '/demo/creators/camila/photos/p7.png', '/demo/creators/camila/photos/p8.png', '/demo/creators/camila/photos/p9.png',
+    '/demo/creators/camila/photos/p10.png', '/demo/creators/camila/photos/p11.png',
+    '/demo/creators/camila/photos/p12.png', '/demo/creators/camila/photos/p13.png',
   ]
   const existing = JSON.parse(localStorage.getItem('photo_studio_history') || '[]')
   const existingUrls = new Set(existing.map(e => e.url))

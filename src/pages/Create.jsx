@@ -84,7 +84,7 @@ function buildPhysicalDescString(d) {
 }
 
 // Floating card configuration
-const ALL_IMGS = ['/inf/i1.png', '/inf/i2.png', '/inf/i3.jpg', '/inf/i4.jpg', '/inf/i5.png', '/inf/i6.jpg', '/inf/i7.png', '/inf/i8.png', '/inf/i9.png', '/inf/i10.png', '/inf/i11.png', '/inf/i12.png', '/inf/i13.png', '/inf/i14.png', '/inf/i15.png', '/inf/i16.png']
+const ALL_IMGS = ['/demo/gallery/influencers/i1.png', '/demo/gallery/influencers/i2.png', '/demo/gallery/influencers/i3.jpg', '/demo/gallery/influencers/i4.jpg', '/demo/gallery/influencers/i5.png', '/demo/gallery/influencers/i6.jpg', '/demo/gallery/influencers/i7.png', '/demo/gallery/influencers/i8.png', '/demo/gallery/influencers/i9.png', '/demo/gallery/influencers/i10.png', '/demo/gallery/influencers/i11.png', '/demo/gallery/influencers/i12.png', '/demo/gallery/influencers/i13.png', '/demo/gallery/influencers/i14.png', '/demo/gallery/influencers/i15.png', '/demo/gallery/influencers/i16.png']
 const CARD_CONFIG = [
   { left: '1%',  top: '15%', w: 162, rot: '-9deg',  op: 0.48, period: 9,  sway: 12, delay: 0.0 },
   { left: '5%',  top: '58%', w: 140, rot:  '5deg',  op: 0.34, period: 11, sway: 15, delay: 1.9 },
