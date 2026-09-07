@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const WORDS = ['Influencer', 'Creator', 'Avatar', 'Celebrity']
+const WORDS = ['Influencer', 'Creator', 'Avatar', 'Campaign']
 const TYPE_SPEED = 75
 const DELETE_SPEED = 45
 const PAUSE_MS = 1800
@@ -183,7 +183,7 @@ export default function Landing() {
             <span style={{ position:'absolute', width:10, height:10, borderRadius:'50%', background:'#34C759', opacity:0.35, animation:'ping 1.8s ease-out infinite' }}/>
             <span style={{ width:7, height:7, borderRadius:'50%', background:'#34C759', flexShrink:0 }}/>
           </span>
-          Made by Dan Kieft
+          Alibaba Cloud AI Hackathon Prototype
         </div>
 
         <h1 style={{ fontSize:'clamp(62px,10vw,104px)', fontWeight:800, letterSpacing:'-3.5px', lineHeight:1.0, color:'#fff', marginBottom:2 }}>
@@ -200,8 +200,8 @@ export default function Landing() {
           <span style={{ display:'inline-block', width:5, height:'0.72em', background:'linear-gradient(to bottom, #EC4899, #A855F7)', marginLeft:6, borderRadius:3, animation:'blink 1s step-end infinite', verticalAlign:'middle', flexShrink:0 }}/>
         </div>
 
-        <p style={{ fontSize:20, color:'rgba(255,255,255,0.38)', lineHeight:1.65, margin:'0 auto 52px', maxWidth:420, fontWeight:400, letterSpacing:'-0.1px' }}>
-          Build, manage, and grow your AI influencers.
+        <p style={{ fontSize:20, color:'rgba(255,255,255,0.38)', lineHeight:1.65, margin:'0 auto 52px', maxWidth:480, fontWeight:400, letterSpacing:'-0.1px' }}>
+          Build fictional virtual creators, generate campaign-ready visuals, and manage brand content safely.
         </p>
 
         <button
